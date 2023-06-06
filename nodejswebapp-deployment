@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejswebapp-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: anandtechy/nodejswebapp
+  template:
+    metadata:
+      labels:
+        app: anandtechy/nodejswebapp
+    spec:
+      containers:
+        - name: nodejswebapp-container
+          image: anandtechy/nodejswebapp:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
